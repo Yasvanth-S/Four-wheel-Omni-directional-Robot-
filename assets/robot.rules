@@ -1,0 +1,4 @@
+SUBSYSTEM=="tty", SUBSYSTEMS=="usb",ATTRS{idVendor}=="0001", ATTRS{idProduct}=="0001", MODE="0777",SYMLINK+="wheel_1"
+SUBSYSTEM=="tty", SUBSYSTEMS=="usb",ATTRS{idVendor}=="0002", ATTRS{idProduct}=="0002", MODE="0777",SYMLINK+="wheel_2"
+SUBSYSTEM=="tty", SUBSYSTEMS=="usb",ATTRS{idVendor}=="0003", ATTRS{idProduct}=="0003", MODE="0777",SYMLINK+="wheel_3"
+SUBSYSTEM=="tty", SUBSYSTEMS=="usb",ATTRS{idVendor}=="0004", ATTRS{idProduct}=="0004", MODE="0777",SYMLINK+="wheel_4"
