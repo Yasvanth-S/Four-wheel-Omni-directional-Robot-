@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 # Rhino Motor Driver (RMCS 2303) - ROS INTERFACE
 # ----------------------------------------------
@@ -90,17 +90,35 @@ class MotorClass:
 
 if __name__ == '__main__':
     rospy.init_node('motor_ros_interface', anonymous=True)
-    left_motor = MotorClass("/dev/left_wheel", 7, "lwheel_ticks", "lwheel_vtarget")
-    right_motor = MotorClass("/dev/right_wheel", 7, "rwheel_ticks", "rwheel_vtarget")
+    wheel_1 = MotorClass("/dev/wheel_1", 7, "wheel1_enc", "wheel1_vel")
+    wheel_2 = MotorClass("/dev/wheel_2", 7, "wheel2_enc", "wheel2_vel")
+    wheel_3 = MotorClass("/dev/wheel_3", 7, "wheel3_enc", "wheel3_vel")
+    wheel_4 = MotorClass("/dev/wheel_4", 7, "wheel4_enc", "wheel4_vel")
+    y_axis = MotorClass("/dev/y_axis", 7, "yaxis_enc", "yaxis_vel")
+    z_axis = MotorClass("/dev/z_axis", 7, "zaxis_enc", "zaxis_vel")
 
     while not rospy.is_shutdown():
-        left_motor.encoder_transmitter()
-        right_motor.encoder_transmitter()
+        wheel_1.encoder_transmitter()
+        wheel_2.encoder_transmitter()
+        wheel_3.encoder_transmitter()
+        wheel_4.encoder_transmitter()
+        y_axis.encoder_transmitter()
+        z_axis.encoder_transmitter()
 
     # Cleaning Up
     rospy.loginfo("Stopping Motors before exiting ...")
-    left_motor.motor.brake()
-    right_motor.motor.brake()
-    del left_motor
-    del right_motor
+    wheel_1.motor.brake()
+    wheel_2.motor.brake()
+    wheel_3.motor.brake()
+    wheel_4.motor.brake()
+    y_axis.motor.brake()
+    z_axis.motor.brake()
+
+    del wheel_1
+    del wheel_2
+    del wheel_3
+    del wheel_4
+    del y_axis
+    del z_axis
+
     sys.exit(0)
