@@ -89,21 +89,35 @@ class MotorClass:
 
 
 if __name__ == '__main__':
-    rospy.init_node('motor_ros_interface', anonymous=True)
-    wheel_1 = MotorClass("/dev/wheel_1", 7, "wheel1_enc", "wheel1_vel")
-    wheel_2 = MotorClass("/dev/wheel_2", 7, "wheel2_enc", "wheel2_vel")
-    wheel_3 = MotorClass("/dev/wheel_3", 7, "wheel3_enc", "wheel3_vel")
-    wheel_4 = MotorClass("/dev/wheel_4", 7, "wheel4_enc", "wheel4_vel")
-    y_axis = MotorClass("/dev/y_axis", 7, "yaxis_enc", "yaxis_vel")
-    z_axis = MotorClass("/dev/z_axis", 7, "zaxis_enc", "zaxis_vel")
+    while True:
+        try:
+            rospy.init_node('motor_ros_interface', anonymous=True)
+            wheel_1 = MotorClass("/dev/wheel_1", 7, "wheel1_enc", "wheel1_vel")
+            wheel_2 = MotorClass("/dev/wheel_2", 7, "wheel2_enc", "wheel2_vel")
+            wheel_3 = MotorClass("/dev/wheel_3", 7, "wheel3_enc", "wheel3_vel")
+            wheel_4 = MotorClass("/dev/wheel_4", 7, "wheel4_enc", "wheel4_vel")
+            y_axis = MotorClass("/dev/y_axis", 7, "yaxis_enc", "yaxis_vel")
+            z_axis = MotorClass("/dev/z_axis", 7, "zaxis_enc", "zaxis_vel")
+            break
+        except KeyBoardInterrupt:
+            print("exiting motor initiators")
+            break
+        except:
+            continue
 
     while not rospy.is_shutdown():
-        wheel_1.encoder_transmitter()
-        wheel_2.encoder_transmitter()
-        wheel_3.encoder_transmitter()
-        wheel_4.encoder_transmitter()
-        y_axis.encoder_transmitter()
-        z_axis.encoder_transmitter()
+        try:
+            wheel_1.encoder_transmitter()
+            wheel_2.encoder_transmitter()
+            wheel_3.encoder_transmitter()
+            wheel_4.encoder_transmitter()
+            y_axis.encoder_transmitter()
+            z_axis.encoder_transmitter()
+        except KeyBoardInterrupt:
+            print("exitting motor controllers")
+            break
+        else:
+            continue
 
     # Cleaning Up
     rospy.loginfo("Stopping Motors before exiting ...")
