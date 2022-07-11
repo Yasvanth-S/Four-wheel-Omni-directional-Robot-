@@ -25,6 +25,7 @@ class JoyClass:
         self.wheel2_pub = rospy.Publisher("/wheel2_vel", Float32, queue_size=10)
         self.wheel3_pub = rospy.Publisher("/wheel3_vel", Float32, queue_size=10)
         self.wheel4_pub = rospy.Publisher("/wheel4_vel", Float32, queue_size=10)
+        self.yaxis_pub = rospy.Publisher("/yaxis_vel", Float32, queue_size=10)
         self.zaxis_pub = rospy.Publisher("/zaxis_vel", Float32, queue_size=10)
         #self.test = rospy.Publisher("/test", Float32, queue_size=10)
         self.rate = rospy.Rate(10)
@@ -63,26 +64,24 @@ class JoyClass:
             self.yaxis_pub.publish(msg.axes[2]*1.7)
         if(joyZ > 0.3 or joyZ < -0.3 or joyZ==0.0):
             self.zaxis_pub.publish(-(msg.axes[5]*1.7))
+        if(msg.buttons[4]):
+            self.yaxis_pub.publish(-1)
+        if(msg.buttons[5]):
+            self.yaxis_pub.publish(1)
         if(msg.buttons[0]):
-            GPIO.output(29.GPIO.HIGH)
-            GPIO.output(31,GPIO.LOW)
-            time.sleep(1)
-            GPIO.output(29,GPIO.LOW)
+            GPIO.output(29,GPIO.HIGH)
             GPIO.output(31,GPIO.LOW)
         if(msg.buttons[3]):
-            GPIO.output(29.GPIO.LOW)
+            GPIO.output(29,GPIO.LOW)
             GPIO.output(31,GPIO.HGIH)
             time.sleep(1)
             GPIO.output(29,GPIO.LOW)
             GPIO.output(31,GPIO.LOW)
         if(msg.buttons[2]):
-            GPIO.output(36.GPIO.HIGH)
-            GPIO.output(40,GPIO.LOW)
-            time.sleep(1)
-            GPIO.output(36,GPIO.LOW)
+            GPIO.output(36,GPIO.HIGH)
             GPIO.output(40,GPIO.LOW)
         if(msg.buttons[1]):
-            GPIO.output(36.GPIO.LOW)
+            GPIO.output(36,GPIO.LOW)
             GPIO.output(40,GPIO.HIGH)
             time.sleep(1)
             GPIO.output(36,GPIO.LOW)
