@@ -99,25 +99,16 @@ if __name__ == '__main__':
             y_axis = MotorClass("/dev/y_axis", 7, "yaxis_enc", "yaxis_vel")
             z_axis = MotorClass("/dev/z_axis", 7, "zaxis_enc", "zaxis_vel")
             break
-        except KeyBoardInterrupt:
-            print("exiting motor initiators")
-            break
         except:
             continue
 
     while not rospy.is_shutdown():
-        try:
-            wheel_1.encoder_transmitter()
-            wheel_2.encoder_transmitter()
-            wheel_3.encoder_transmitter()
-            wheel_4.encoder_transmitter()
-            y_axis.encoder_transmitter()
-            z_axis.encoder_transmitter()
-        except KeyBoardInterrupt:
-            print("exitting motor controllers")
-            break
-        else:
-            continue
+        wheel_1.encoder_transmitter()
+        wheel_2.encoder_transmitter()
+        wheel_3.encoder_transmitter()
+        wheel_4.encoder_transmitter()
+        y_axis.encoder_transmitter()
+        z_axis.encoder_transmitter()
 
     # Cleaning Up
     rospy.loginfo("Stopping Motors before exiting ...")
