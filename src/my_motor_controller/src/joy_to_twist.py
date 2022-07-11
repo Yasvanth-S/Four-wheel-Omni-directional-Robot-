@@ -6,6 +6,7 @@ from std_msgs.msg import Float32
 import Jetson.GPIO as GPIO
 import subprocess
 import shlex
+import time
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(29,GPIO.OUT,initial=GPIO.LOW)
@@ -61,7 +62,7 @@ class JoyClass:
         self.wheel4_pub.publish(constrain(wheel4,-1.7,1.7))
         #self.test.publish(angular)
         if(joyY > 0.3 or joyY < -0.3 or joyY==0.0):
-            self.yaxis_pub.publish(msg.axes[2]*1.7)
+            self.yaxis_pub.publish(-msg.axes[2]*1.7)
         if(joyZ > 0.3 or joyZ < -0.3 or joyZ==0.0):
             self.zaxis_pub.publish(-(msg.axes[5]*1.7))
         if(msg.buttons[4]):
@@ -73,7 +74,7 @@ class JoyClass:
             GPIO.output(31,GPIO.LOW)
         if(msg.buttons[3]):
             GPIO.output(29,GPIO.LOW)
-            GPIO.output(31,GPIO.HGIH)
+            GPIO.output(31,GPIO.HIGH)
             time.sleep(1)
             GPIO.output(29,GPIO.LOW)
             GPIO.output(31,GPIO.LOW)
