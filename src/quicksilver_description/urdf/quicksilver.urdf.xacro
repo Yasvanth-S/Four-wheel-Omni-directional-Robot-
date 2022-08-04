@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="quicksilver">
+	<xacro:include filename="$(find quicksilver_description)/urdf/rplidar.urdf.xacro"/>
+	<xacro:include filename="$(find quicksilver_description)/urdf/rim.urdf.xacro"/>
+  <link name="origin_link"/>
+  <material name="white">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.75 0.75 0.03"/>
+    </geometry>
+    <origin rpy = "0 0 0" xyz="0 0 0.04"/>
+      <material name="white"/>
+    </visual>
+    <inertial>
+      <mass value="1"/>
+      <inertia
+        ixx="0.04695"
+        ixy="0"
+        ixz="0"
+        iyy="0.04695"
+        iyz="0"
+        izz="0.09385"/>
+      </inertial>
+	  <collision>
+		<geometry>
+			<box size="0.75 0.75 0.03"/>
+		</geometry>
+	  </collision>
+  </link>
+  <joint name="base_joint" type="fixed">
+		<parent link="origin_link" />
+		<child link="base_link" />
+		<origin xyz="0 0 0.01905"/>
+	</joint>
+<xacro:rplidar
+		name="rplidar"
+		xyz="0 0.30 0.09"
+		rpy="0.0 0.0 -2.28"
+		color="1 0.84 0 1" />
+  <xacro:rim_macro
+		name="back"
+    	color="0.6 0 0"
+		xyz="-0.393 0 0.016"
+		rpy="1.570796326794896 0 1.5708"/>
+	<xacro:rim_macro
+		name="left"
+		color="0 0.6 0"
+		xyz="0 -0.393 0.016"
+		rpy="1.570796326794896 0 3.141592653589793"/>
+	<xacro:rim_macro
+		name="front"
+		color="0.6 0 0"
+		xyz="0.393 0 0.016"
+		rpy="1.570796326794896 0 -1.5708"/>
+	<xacro:rim_macro
+		name="right"
+		color="0 0.6 0"
+		xyz="0 0.393 0.016"
+		rpy="1.570796326794896 0 0"/>
+
+
+	<gazebo reference="base_link">
+    		<material>Gazebo/Black</material>
+  	</gazebo>
+
+	<gazebo reference="rim_left_link">
+    		<material>Gazebo/Green</material>
+  	</gazebo>
+
+	<gazebo reference="rim_back_link">
+    		<material>Gazebo/Red</material>
+  	</gazebo>
+
+	<gazebo reference="rim_right_link">
+    		<material>Gazebo/Green</material>
+  	</gazebo>
+  <gazebo reference="rim_front_link">
+    <material>
+      Gazebo/Red
+    </material>
+  </gazebo>
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+		<robotNamespace>/open_base</robotNamespace>
+		</plugin>
+	</gazebo>
+
+ </robot>

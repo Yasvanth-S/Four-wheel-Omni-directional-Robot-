@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" default="empty.world"/>
+	</include>	
+	<arg name="base_frame" default="origin_link"/>
+	<arg name="odom_frame" default="origin_link"/>
+	<param name="robot_description" command="$(find xacro)/xacro '$(find quicksilver_description)/urdf/quicksilver.urdf.xacro'" />
+
+		
+	<arg name="x" default="0.0" />
+	<arg name="y" default="0.0" />
+	<arg name="z" default="0.0" />
+	
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -model open_base -param robot_description"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+ 
+  <!-- SLAM - Map Building -->
+  <node name="gmapping" pkg="gmapping" type="slam_gmapping">
+    <rosparam file="$(find quicksilver_description)/config/gmapping.yaml" command="load"/>
+  </node>
+
+</launch>
