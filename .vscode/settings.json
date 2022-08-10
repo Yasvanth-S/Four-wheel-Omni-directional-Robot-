@@ -7,5 +7,10 @@
     "python.analysis.extraPaths": [
         "/opt/ros/noetic/lib/python3/dist-packages",
         "/opt/ros/noetic/lib"
-    ]
+    ],
+    "files.associations": {
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
+    }
 }

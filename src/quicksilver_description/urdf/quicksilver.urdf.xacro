@@ -36,6 +36,8 @@
 		<child link="base_link" />
 		<origin xyz="0 0 0.01905"/>
 	</joint>
+
+	
 <xacro:rplidar
 		name="rplidar"
 		xyz="0 0.30 0.09"
