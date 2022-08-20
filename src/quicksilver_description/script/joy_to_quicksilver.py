@@ -9,10 +9,10 @@ class JoyClass:
     def __init__(self, scale=1.0, offset=0.0, deadband=0.1):
         rospy.init_node("quicksilver_node")
         self.joy_sub = rospy.Subscriber("/joy", Joy, self.joy_callback)
-        self.wheel1_pub = rospy.Publisher("/open_base/right_joint_velocity_controller/command", Float64, queue_size=10)
-        self.wheel2_pub = rospy.Publisher("/open_base/back_joint_velocity_controller/command", Float64, queue_size=10)
-        self.wheel3_pub = rospy.Publisher("/open_base/left_joint_velocity_controller/command", Float64, queue_size=10)
-        self.wheel4_pub = rospy.Publisher("/open_base/front_joint_velocity_controller/command", Float64, queue_size=10)
+        self.wheel1_pub = rospy.Publisher("/quicksilver/rim_wheel2_joint/command", Float64, queue_size=10)
+        self.wheel2_pub = rospy.Publisher("/quicksilver/rim_wheel3_joint/command", Float64, queue_size=10)
+        self.wheel3_pub = rospy.Publisher("/quicksilver/rim_wheel4_joint/command", Float64, queue_size=10)
+        self.wheel4_pub = rospy.Publisher("/quicksilver/rim_wheel1_joint/command", Float64, queue_size=10)
 
         self.rate = rospy.Rate(10)
 
@@ -26,10 +26,10 @@ class JoyClass:
             angular = rightTrig
         elif(leftTrig<0.0 and rightTrig == 0.0):
             angular = leftTrig     
-        wheel1 = (msg.axes[0]*5.5) + (msg.axes[6]*5.5) + (angular * 3.6)
-        wheel2 = (-msg.axes[1]*5.5) + (-msg.axes[7]*5.5) + (angular * 3.6)
-        wheel3 = (-msg.axes[0]*5.5) + (-msg.axes[6]*5.5) + (angular * 3.6)
-        wheel4 = (msg.axes[1]*5.5) + (msg.axes[7]*5.5) + (angular * 3.6)  #angular negative due to inward placement of wheels
+        wheel1 = (msg.axes[1]*5.5) + (msg.axes[7]*5.5) + (angular * 3.6)
+        wheel2 = (-msg.axes[0]*5.5) + (-msg.axes[6]*5.5) + (angular * 3.6)
+        wheel3 = (-msg.axes[1]*5.5) + (-msg.axes[7]*5.5) + (angular * 3.6)
+        wheel4 = (msg.axes[0]*5.5) + (msg.axes[6]*5.5) + (angular * 3.6)  #angular negative due to inward placement of wheels
         self.wheel1_pub.publish(constrain(wheel1,-5.5,5.5))
         self.wheel2_pub.publish(constrain(wheel2,-5.5,5.5))
         self.wheel3_pub.publish(constrain(wheel3,-5.5,5.5))

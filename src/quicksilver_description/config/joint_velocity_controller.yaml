@@ -1,4 +1,4 @@
-quicksilver/gazebo_ros_control/pid_gains:
+quicksilver:
 
     joint_state_controller:
         type: joint_state_controller/JointStateController

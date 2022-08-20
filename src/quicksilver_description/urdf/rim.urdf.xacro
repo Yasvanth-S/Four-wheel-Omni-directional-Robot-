@@ -10,14 +10,15 @@
 		<link name="rim_${name}_link">
 			<inertial>
 				<origin xyz="0 0 -0.000343"/>
-				<mass value="0.4"/>
+				<mass value="0.3"/>
 				<inertia
-					ixx="4.57e-03"
+					ixx="0.000004654736"
 					ixy="0"
 					ixz="0"
-					iyy="4.57e-02"
+					iyy="0.000004654736"
 					iyz="0"
-					izz="5e-04"/>
+					izz="0.000005761332"/>
+
 
 			</inertial>
 			<visual>

@@ -16,6 +16,7 @@
       <material name="white"/>
     </visual>
     <inertial>
+	  <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0"/>
       <mass value="1"/>
       <inertia
         ixx="0.04695"
@@ -44,22 +45,22 @@
 		rpy="0.0 0.0 -2.28"
 		color="1 0.84 0 1" />
   <xacro:rim_macro
-		name="back"
+		name="wheel4"
     	color="0.6 0 0"
 		xyz="-0.393 0 0.016"
 		rpy="1.570796326794896 0 1.5708"/>
 	<xacro:rim_macro
-		name="left"
+		name="wheel3"
 		color="0 0.6 0"
 		xyz="0 -0.393 0.016"
 		rpy="1.570796326794896 0 3.141592653589793"/>
 	<xacro:rim_macro
-		name="front"
+		name="wheel2"
 		color="0.6 0 0"
 		xyz="0.393 0 0.016"
 		rpy="1.570796326794896 0 -1.5708"/>
 	<xacro:rim_macro
-		name="right"
+		name="wheel1"
 		color="0 0.6 0"
 		xyz="0 0.393 0.016"
 		rpy="1.570796326794896 0 0"/>
@@ -69,25 +70,25 @@
     		<material>Gazebo/Black</material>
   	</gazebo>
 
-	<gazebo reference="rim_left_link">
+	<gazebo reference="rim_wheel3_link">
     		<material>Gazebo/Green</material>
   	</gazebo>
 
-	<gazebo reference="rim_back_link">
+	<gazebo reference="rim_wheel4_link">
     		<material>Gazebo/Red</material>
   	</gazebo>
 
-	<gazebo reference="rim_right_link">
+	<gazebo reference="rim_wheel1_link">
     		<material>Gazebo/Green</material>
   	</gazebo>
-  <gazebo reference="rim_front_link">
+  <gazebo reference="rim_wheel2_link">
     <material>
       Gazebo/Red
     </material>
   </gazebo>
 	<gazebo>
 		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-		<robotNamespace>/open_base</robotNamespace>
+		<robotNamespace>/quicksilver</robotNamespace>
 		</plugin>
 	</gazebo>
 
