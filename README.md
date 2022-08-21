@@ -30,7 +30,7 @@
 5. Odom and tf publish using wheel encoders.
 6. Gmapping is done and code will be uploaded soon for gmapping and odom.
 
-### **USB name after setting up rules
+### **USB name after setting up rules**
 
                         | S.NO |  VID | PID  |         NAME        |
                         |:----:|:----:|:----:|:-------------------:|
