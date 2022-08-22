@@ -1,21 +1,40 @@
 local_costmap:
   #We'll publish the voxel grid used by this costmap
-  publish_voxel_map: true
-
+  #publish_voxel_map: true
+  robot_radius: 0.36
+  footprint_padding: 0.02
+  transform_tolerance: 1.0
   #Set the global and robot frames for the costmap
   global_frame: odom
   robot_base_frame: origin_link
 
   #Set the update and publish frequency of the costmap
-  update_frequency: 5.0
+  update_frequency: 7.5
   publish_frequency: 2.0
 
   #We'll configure this costmap to be a rolling window... meaning it is always
   #centered at the robot
   static_map: false
   rolling_window: true
-  width: 6.0
-  height: 6.0
-  resolution: 0.025
-  origin_x: 10.0
-  origin_y: 1.0
+  width: 1
+  height: 1
+  resolution: 0.015
+  # origin_x: 10.0
+  # origin_y: 1.0
+  plugins:
+    - {name: static_map,           type: "costmap_2d::StaticLayer"}            
+    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation, type: "costmap_2d::InflationLayer"}
+
+  static:        
+    map_topic: /move_base/local_costmap/costmap
+    subscribe_to_updates: true
+
+  obstacle_layer:
+    observation_sources: laser
+    laser: {data_type: LaserScan, sensor_frame: rplidar_link, topic: /scan, marking: true, clearing: true, min_obstacle_height: -0.05, obstacle_range: 2.0, raytrace_range: 5.0, inf_is_valid: true}
+        
+
+  inflation:
+    inflation_radius: 0.4
+    cost_scaling_factor: 4 # larger number = lower cost elevation

@@ -1,14 +1,38 @@
 global_costmap:
+  robot_radius: 0.36
+  footprint_padding: 0.02
+  transform_tolerance: 1.0
+
   #Set the global and robot frames for the costmap
   global_frame: map
   robot_base_frame: origin_link
 
   #Set the update and publish frequency of the costmap
-  update_frequency: 5.0
-  publish_frequency: 2.0
+  update_frequency: 4.0
+  publish_frequency: 0.5
 
   #We'll use a map served by the map_server to initialize this costmap
   static_map: true
   rolling_window: false
+  track_unknown_space: true
 
-  footprint_padding: 0.02
+  width: 9
+  height: 13.5
+  resolution: 0.01
+
+  plugins: 
+    - {name: static_map,           type: "costmap_2d::StaticLayer"}            
+    - {name: sensor,           type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation,        type: "costmap_2d::InflationLayer"}
+
+  static:        
+    map_topic: /map
+    subscribe_to_updates: true
+
+  sensor:
+    observation_sources: laser
+    laser: {sensor_frame: rplidar_link, data_type: LaserScan, topic: /scan, marking: true, clearing: true, obstacle_range: 2.0, raytrace_range: 5.0, inf_is_valid: true}
+
+  inflation:
+    inflation_radius: 0.4
+    cost_scaling_factor: 8

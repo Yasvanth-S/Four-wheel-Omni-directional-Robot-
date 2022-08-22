@@ -2,7 +2,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="quicksilver">
 	<xacro:include filename="$(find quicksilver_description)/urdf/rplidar.urdf.xacro"/>
 	<xacro:include filename="$(find quicksilver_description)/urdf/rim.urdf.xacro"/>
-	<xacro:arg name="imu_visual"   default="false"/>
 	<link name="origin_link"/>
   <material name="white">
     <color rgba="0 0 0 1"/>
@@ -38,18 +37,10 @@
 		<child link="base_link" />
 		<origin xyz="0 0 0.01905"/>
 	</joint>
-	<joint name="imu_joint" type="fixed">
-		<parent link="base_link"/>
-		<child link="imu_link"/>
-		<origin xyz="0 0.30 0.09" rpy="0 0 0"/>
-	  </joint>
-	
-	  <link name="imu_link"/>
-	
 	
 <xacro:rplidar
 		name="rplidar"
-		xyz="0 0.30 0.09"
+		xyz="0.0 0.30 0.09"
 		rpy="0.0 0.0 -2.28"
 		color="1 0.84 0 1" />
   <xacro:rim_macro
@@ -69,70 +60,63 @@
 		rpy="1.570796326794896 0 -1.5708"/>
 	<xacro:rim_macro
 		name="wheel1"
-		color="0 0.6 0"
+		color="0 0.6 0.0"
 		xyz="0 0.393 0.016"
 		rpy="1.570796326794896 0 0"/>
 
 
 	<gazebo reference="base_link">
     		<material>Gazebo/Black</material>
-			<mu1>0.1</mu1>
-			<mu2>0.1</mu2>
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
 			<kp>500000.0</kp>
 			<kd>10.0</kd>
 			<minDepth>0.001</minDepth>
-			<maxVel>0.1</maxVel>
+			<maxVel>0.0</maxVel>
 			<fdir1>1 0 0</fdir1>
   	</gazebo>
 
 	<gazebo reference="rim_wheel3_link">
     		<material>Gazebo/Green</material>
-			<mu1>0.1</mu1>
-			<mu2>0.1</mu2>
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
 			<kp>500000.0</kp>
 			<kd>10.0</kd>
 			<minDepth>0.001</minDepth>
-			<maxVel>0.1</maxVel>
+			<maxVel>0.0</maxVel>
 			<fdir1>1 0 0</fdir1>
   	</gazebo>
 
 	<gazebo reference="rim_wheel4_link">
     		<material>Gazebo/Red</material>
-			<mu1>0.1</mu1>
-			<mu2>0.1</mu2>
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
 			<kp>500000.0</kp>
 			<kd>10.0</kd>
 			<minDepth>0.001</minDepth>
-			<maxVel>0.1</maxVel>
+			<maxVel>0.0</maxVel>
 			<fdir1>1 0 0</fdir1>
   	</gazebo>
 
 	<gazebo reference="rim_wheel1_link">
     		<material>Gazebo/Green</material>
-			<mu1>0.1</mu1>
-			<mu2>0.1</mu2>
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
 			<kp>500000.0</kp>
 			<kd>10.0</kd>
 			<minDepth>0.001</minDepth>
-			<maxVel>0.1</maxVel>
+			<maxVel>0.0</maxVel>
 			<fdir1>1 0 0</fdir1>
   	</gazebo>
   <gazebo reference="rim_wheel2_link">
     		<material>Gazebo/Red</material>
-			<mu1>0.1</mu1>
-			<mu2>0.1</mu2>
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
 			<kp>500000.0</kp>
 			<kd>10.0</kd>
 			<minDepth>0.001</minDepth>
-			<maxVel>0.1</maxVel>
+			<maxVel>0.0</maxVel>
 			<fdir1>1 0 0</fdir1>
-  </gazebo>
-  <gazebo reference="imu_link">
-    <sensor type="imu" name="imu">
-      <always_on>true</always_on>
-      <visualize>$(arg imu_visual)</visualize>
-    </sensor>
-    <material>Gazebo/FlatBlack</material>
   </gazebo>
 	<gazebo>
 		
@@ -140,32 +124,4 @@
 			<robotNamespace>/quicksilver</robotNamespace>
 		</plugin>
 	</gazebo>
-	<gazebo>
-		<plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
-		  <alwaysOn>true</alwaysOn>
-		  <bodyName>imu_link</bodyName>
-		  <frameName>imu_link</frameName>
-		  <topicName>imu</topicName>
-		  <serviceName>imu_service</serviceName>
-		  <gaussianNoise>0.0</gaussianNoise>
-		  <updateRate>100</updateRate>
-		  <imu>
-			<noise>
-			  <type>gaussian</type>
-			  <rate>
-				<mean>0.0</mean>
-				<stddev>2e-4</stddev>
-				<bias_mean>0.0000075</bias_mean>
-				<bias_stddev>0.0000008</bias_stddev>
-			  </rate>
-			  <accel>
-				<mean>0.0</mean>
-				<stddev>1.7e-2</stddev>
-				<bias_mean>0.1</bias_mean>
-				<bias_stddev>0.001</bias_stddev>
-			  </accel>
-			</noise>
-		  </imu>
-		</plugin>
-	  </gazebo>
  </robot>

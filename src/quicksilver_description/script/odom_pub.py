@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-
-import queue
+ 
 import rospy
 from nav_msgs.msg import Odometry
-from std_msgs.msg import Header
 import tf
 from gazebo_msgs.srv import GetModelState, GetModelStateRequest
 
@@ -25,15 +23,22 @@ while not rospy.is_shutdown():
     result = get_model_srv(model)
     msgx = result.pose.position.x
     msgy = result.pose.position.y
-    msgth = result.pose.orientation.z
     br.sendTransform((msgx, msgy, 0),
-                     (result.pose.orientation.x,result.pose.orientation.y,result.pose.orientation.z,result.pose.orientation.w),
+                     (0.0,0.0,result.pose.orientation.z,result.pose.orientation.w),
                      rospy.Time.now(),
                      'origin_link',
                      "odom")
 
-    odom.pose.pose = result.pose 
-    odom.twist.twist = result.twist
+    odom.pose.pose.position.x = result.pose.position.x
+    odom.pose.pose.position.y = result.pose.position.y
+    odom.pose.pose.position.z = 0
+    odom.pose.pose.orientation.x = 0.0
+    odom.pose.pose.orientation.y = 0.0
+    odom.pose.pose.orientation.z = result.pose.orientation.z
+    odom.pose.pose.orientation.w = result.pose.orientation.w
+    odom.twist.twist.linear.x = result.twist.linear.x
+    odom.twist.twist.linear.y = result.twist.linear.y
+    odom.twist.twist.angular.z = result.twist.angular.z
 
     odom.header.stamp = now
     odom.header.frame_id = 'odom'
