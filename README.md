@@ -22,7 +22,7 @@
 8. Rp lidar A2M8
 9. Joystick
 
-###**Programming**
+### **Programming**
 1. USB setup rules for UART.
 2. startup file.
 3. motor communication code using modbus.
@@ -30,7 +30,7 @@
 5. Odom and tf publish using wheel encoders.
 6. Gmapping is done and code will be uploaded soon for gmapping and odom.
 
-###**USB name after setting up rules
+### **USB name after setting up rules**
 
                         | S.NO |  VID | PID  |         NAME        |
                         |:----:|:----:|:----:|:-------------------:|
@@ -39,4 +39,5 @@
                         |  3   | 0003 | 0003 | quicksilver wheel 3 |
                         |  4   | 0004 | 0004 | quicksilver wheel 4 |
 
-
+## **Gmapping Image**
+![alt text](https://github.com/Yasvanth-S/quicksilver/blob/master/assets/Gmapping.png?raw=true)
