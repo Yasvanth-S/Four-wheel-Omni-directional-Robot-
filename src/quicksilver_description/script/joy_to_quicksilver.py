@@ -4,8 +4,7 @@ import rospy
 from sensor_msgs.msg import Joy
 from std_msgs.msg import Float64
 from geometry_msgs.msg import Twist
-def constrain(val, min_val, max_val):
-    return min(max_val, max(min_val, val))
+
 class JoyClass:
     def __init__(self, scale=1.0, offset=0.0, deadband=0.1):
         rospy.init_node("quicksilver_node")
@@ -28,10 +27,10 @@ class JoyClass:
         wheel2 = (-self.y/0.038) + (self.z / 0.038)
         wheel3 = (-self.x/0.038) + (self.z / 0.038) # 0.038 is wheel radius
         wheel4 = (self.y/0.038) + (self.z / 0.038)#angular negative due to inward placement of wheels
-        self.wheel1_pub.publish(constrain(wheel1,-5.5,5.5))
-        self.wheel2_pub.publish(constrain(wheel2,-5.5,5.5))
-        self.wheel3_pub.publish(constrain(wheel3,-5.5,5.5))
-        self.wheel4_pub.publish(constrain(wheel4,-5.5,5.5))
+        self.wheel1_pub.publish(wheel4)
+        self.wheel2_pub.publish(wheel1)
+        self.wheel3_pub.publish(wheel2)
+        self.wheel4_pub.publish(wheel3)
 
     def joy_callback(self, msg):
         wheel1, wheel2, wheel3, wheel4, joyY, joyZ, angular = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
@@ -47,10 +46,10 @@ class JoyClass:
         wheel2 = (-msg.axes[0]*5) + (-msg.axes[6]*5) + (angular * 3.6) + (-self.x*5) + (self.z * 3.6)
         wheel3 = (-msg.axes[1]*5) + (-msg.axes[7]*5) + (angular * 3.6) + (-self.y*5) + (self.z * 3.6)
         wheel4 = (msg.axes[0]*5) + (msg.axes[6]*5) + (angular * 3.6) + (self.x*5) + (self.z * 3.6)#angular negative due to inward placement of wheels
-        self.wheel1_pub.publish(constrain(wheel1,-5.5,5.5))
-        self.wheel2_pub.publish(constrain(wheel2,-5.5,5.5))
-        self.wheel3_pub.publish(constrain(wheel3,-5.5,5.5))
-        self.wheel4_pub.publish(constrain(wheel4,-5.5,5.5))
+        self.wheel1_pub.publish(wheel1)
+        self.wheel2_pub.publish(wheel2)
+        self.wheel3_pub.publish(wheel3)
+        self.wheel4_pub.publish(wheel4)
         #self.test.publish(angular)
 
 if __name__=="__main__":

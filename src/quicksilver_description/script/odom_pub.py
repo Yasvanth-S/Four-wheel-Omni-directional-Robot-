@@ -26,7 +26,7 @@ while not rospy.is_shutdown():
     br.sendTransform((msgx, msgy, 0),
                      (0.0,0.0,result.pose.orientation.z,result.pose.orientation.w),
                      rospy.Time.now(),
-                     'origin_link',
+                     'base_footprint',
                      "odom")
 
     odom.pose.pose.position.x = result.pose.position.x
@@ -42,7 +42,7 @@ while not rospy.is_shutdown():
 
     odom.header.stamp = now
     odom.header.frame_id = 'odom'
-    odom.child_frame_id = 'origin_link'
+    odom.child_frame_id = 'base_footprint'
     odom_pub.publish(odom)
 
     r.sleep()

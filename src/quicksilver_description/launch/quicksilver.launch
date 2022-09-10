@@ -3,7 +3,7 @@
 	<arg name="open_rviz" default="true"/>
 	<arg name="move_forward_only" default="false"/>
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<arg name="world_name" value="$(find quicksilver_description)/world/quicksilver_world_design1.world"/>
+		<arg name="world_name" value="$(find quicksilver_description)/world/quicksilver_world.world"/>
 		<arg name="paused" value="false"/>
 		<arg name="use_sim_time" value="true"/>
 		<arg name="gui" value="true"/>
@@ -11,8 +11,8 @@
 		<arg name="debug" value="false"/>	
 	</include>	
 	<param name="robot_description" command="$(find xacro)/xacro '$(find quicksilver_description)/urdf/quicksilver.urdf.xacro'" />
-	<arg name="x" default="10.0" />
-	<arg name="y" default="1.0" />
+	<arg name="x" default="0.0" />
+	<arg name="y" default="0.0" />
 	<arg name="z" default="0.0" />
 	<param name="rate" value="50" />
 	<rosparam file="$(find quicksilver_description)/config/joint_velocity.yaml" command="load"/>
@@ -33,25 +33,26 @@
 	rim_wheel2_joint
 	rim_wheel1_joint
 	"/>
-   <!-- SLAM - Map Building ->
-    <node name="gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
+   <!-- SLAM - Map Building -->
+    <!-- <node name="gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
     <rosparam file="$(find quicksilver_description)/config/gmapping.yaml" command="load"/>
-    </node>-->
+    </node> -->
     
 	<!-- Map server!-->
 	<node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
-	<!--AMCL--> 
+	<!--AMCL -->
 	<include file="$(find quicksilver_description)/launch/amcl.launch"/>
 
 	<!-- move_base -->
-	<include file="$(find quicksilver_description)/launch/move_base.launch">
-	</include>
+	 <include file="$(find quicksilver_description)/launch/move_base.launch">
+	</include> 
 
 	<!-- rviz -->
 	<group if="$(arg open_rviz)"> 
 		<node pkg="rviz" type="rviz" name="rviz" required="true"
 			  args="-d $(find quicksilver_description)/navigation.rviz"/> 
 	</group>
+	<!-- <node pkg="teleop_twist_keyboard" name="teleop" type="teleop_twist_keyboard.py" /> -->
 	
 </launch>

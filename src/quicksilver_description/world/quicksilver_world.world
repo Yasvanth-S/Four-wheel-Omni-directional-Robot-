@@ -2292,96 +2292,6 @@
       </link>
       <pose>2.66988 2.78556 0 0 -0 0</pose>
     </model>
-    <model name='brick_box_3x1x3_1_clone_14'>
-      <static>1</static>
-      <link name='chassis'>
-        <pose>0 0 1.5 0 -0 0</pose>
-        <collision name='collision'>
-          <geometry>
-            <box>
-              <size>3 1 3</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
-              <scale>3 1 3</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <script>
-              <uri>model://brick_box_3x1x3/materials/scripts</uri>
-              <uri>model://brick_box_3x1x3/materials/textures</uri>
-              <name>BrickBox/Diffuse</name>
-            </script>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0.680915 1.78742 0 0 0 -1.58618</pose>
-    </model>
-    <model name='brick_box_3x1x3_1_clone_15'>
-      <static>1</static>
-      <link name='chassis'>
-        <pose>0 0 1.5 0 -0 0</pose>
-        <collision name='collision'>
-          <geometry>
-            <box>
-              <size>3 1 3</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
-              <scale>3 1 3</scale>
-            </mesh>
-          </geometry>
-          <material>
-            <script>
-              <uri>model://brick_box_3x1x3/materials/scripts</uri>
-              <uri>model://brick_box_3x1x3/materials/textures</uri>
-              <name>BrickBox/Diffuse</name>
-            </script>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0.635592 -1.15864 0 0 0 -1.58618</pose>
-    </model>
     <model name='brick_box_3x1x3_1_clone_16'>
       <static>1</static>
       <link name='chassis'>
@@ -2923,10 +2833,10 @@
       <pose>6.76502 -2.37263 0 0 0 -1.58618</pose>
     </model>
     <state world_name='default'>
-      <sim_time>1187 450000000</sim_time>
-      <real_time>137 183213049</real_time>
-      <wall_time>1660927352 926365913</wall_time>
-      <iterations>136400</iterations>
+      <sim_time>1251 970000000</sim_time>
+      <real_time>64 809206263</real_time>
+      <wall_time>1661233832 791888270</wall_time>
+      <iterations>64520</iterations>
       <model name='brick_box_3x1x3'>
         <pose>6.24661 -9.49277 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -3078,10 +2988,10 @@
         </link>
       </model>
       <model name='brick_box_3x1x3_0_clone_13_clone_5'>
-        <pose>2.66988 2.78556 0 0 -0 0</pose>
+        <pose>3.46711 2.78556 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='chassis'>
-          <pose>2.66988 2.78556 1.5 0 -0 0</pose>
+          <pose>3.46711 2.78556 1.5 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -3267,26 +3177,6 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='brick_box_3x1x3_1_clone_14'>
-        <pose>0.680915 1.78742 0 0 0 -1.58618</pose>
-        <scale>1 1 1</scale>
-        <link name='chassis'>
-          <pose>0.680915 1.78742 1.5 0 0 -1.58618</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='brick_box_3x1x3_1_clone_15'>
-        <pose>0.654661 0.161896 0 0 0 -1.58618</pose>
-        <scale>1 1 1</scale>
-        <link name='chassis'>
-          <pose>0.654661 0.161896 1.5 0 0 -1.58618</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
       <model name='brick_box_3x1x3_1_clone_16'>
         <pose>0.620295 -7.52358 0 0 0 -1.58618</pose>
         <scale>1 1 1</scale>
@@ -3312,6 +3202,26 @@
         <scale>1 1 1</scale>
         <link name='chassis'>
           <pose>4.13245 4.6949 1.5 0 0 -1.58618</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_box_3x1x3_1_clone_16_clone_0_clone'>
+        <pose>2.51606 1.73145 0 0 0 -1.58618</pose>
+        <scale>1 1 1</scale>
+        <link name='chassis'>
+          <pose>2.51606 1.73145 1.5 0 0 -1.58618</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_box_3x1x3_1_clone_16_clone_0_clone_0'>
+        <pose>2.49106 -0.551376 0 0 0 -1.58618</pose>
+        <scale>1 1 1</scale>
+        <link name='chassis'>
+          <pose>2.49106 -0.551376 1.5 0 0 -1.58618</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -3733,7 +3643,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-0.21888 18.8638 45.1295 0 1.1978 -1.0839</pose>
+        <pose>-9.40999 14.4178 37.1328 0 1.2898 -0.364602</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
@@ -4457,6 +4367,96 @@
         <kinematic>0</kinematic>
       </link>
       <pose>6.54317 9.83489 0 0 0 -1.58618</pose>
+    </model>
+    <model name='brick_box_3x1x3_1_clone_16_clone_0_clone'>
+      <static>1</static>
+      <link name='chassis'>
+        <pose>0 0 1.5 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>3 1 3</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>3 1 3</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model://brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.51606 1.73145 0 0 0 -1.58618</pose>
+    </model>
+    <model name='brick_box_3x1x3_1_clone_16_clone_0_clone_0'>
+      <static>1</static>
+      <link name='chassis'>
+        <pose>0 0 1.5 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>3 1 3</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>3 1 3</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model://brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.49106 -0.551376 0 0 0 -1.58618</pose>
     </model>
   </world>
 </sdf>

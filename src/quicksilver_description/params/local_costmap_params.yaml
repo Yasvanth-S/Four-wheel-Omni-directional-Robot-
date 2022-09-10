@@ -3,10 +3,10 @@ local_costmap:
   #publish_voxel_map: true
   robot_radius: 0.36
   footprint_padding: 0.02
-  transform_tolerance: 1.0
+  transform_tolerance: 5.0
   #Set the global and robot frames for the costmap
   global_frame: odom
-  robot_base_frame: origin_link
+  robot_base_frame: base_footprint
 
   #Set the update and publish frequency of the costmap
   update_frequency: 7.5

@@ -8,5 +8,6 @@
         "/opt/ros/noetic/lib/python3/dist-packages",
         "/opt/ros/noetic/lib",
         "/opt/ros/noetic/lib"
-    ]
+    ],
+    "cmake.sourceDirectory": "${workspaceFolder}/quicksilver_description"
 }

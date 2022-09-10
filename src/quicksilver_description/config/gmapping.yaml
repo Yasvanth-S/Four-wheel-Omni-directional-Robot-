@@ -1,5 +1,5 @@
 throttle_scans: 1
-base_frame    : "origin_link"
+base_frame    : "base_footprint"
 map_frame     : "map"
 odom_frame    : "odom"
 
