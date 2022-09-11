@@ -33,12 +33,12 @@
 	rim_wheel2_joint
 	rim_wheel1_joint
 	"/>
-   <!-- SLAM - Map Building -->
-    <!-- <node name="gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
+   <!-- SLAM - Map Building ->
+     <node name="gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
     <rosparam file="$(find quicksilver_description)/config/gmapping.yaml" command="load"/>
     </node> -->
     
-	<!-- Map server!-->
+	<!-- Map server! -->
 	<node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
 	<!--AMCL -->
@@ -52,7 +52,7 @@
 	<group if="$(arg open_rviz)"> 
 		<node pkg="rviz" type="rviz" name="rviz" required="true"
 			  args="-d $(find quicksilver_description)/navigation.rviz"/> 
-	</group>
+	</group> 
 	<!-- <node pkg="teleop_twist_keyboard" name="teleop" type="teleop_twist_keyboard.py" /> -->
 	
 </launch>

@@ -2,13 +2,15 @@
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <!-- local planner -->   
     <param name="base_global_planner" value="navfn/NavfnROS"/>
-    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>      
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />     
     <!-- <rosparam file="$(find quicksilver_description)/params/dwa_local_planner_params.yaml" command="load"/> -->
     <!-- params for costmap layers --> 
     <rosparam file="$(find quicksilver_description)/params/local_costmap_params.yaml" command="load"/>
     <rosparam file="$(find quicksilver_description)/params/global_costmap_params.yaml" command="load"/>
     <rosparam file="$(find quicksilver_description)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find quicksilver_description)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <param name="controller_frequency" value="10.0" />
+    <rosparam file="$(find quicksilver_description)/params/base_local_planner_params.yaml" command="load" />
     <!-- <rosparam file="$(find quicksilver_description)/params/move_base_params.yaml" command="load" /> -->
   </node>
 </launch>
