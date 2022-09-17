@@ -14,7 +14,7 @@
 	<arg name="x" default="0.0" />
 	<arg name="y" default="0.0" />
 	<arg name="z" default="0.0" />
-	<param name="rate" value="50" />
+	<param name="rate" value="10" />
 	<rosparam file="$(find quicksilver_description)/config/joint_velocity.yaml" command="load"/>
 	<rosparam file="$(find quicksilver_description)/config/joint_velocity_controller.yaml" command="load"/> 
 	<param name="/joy_node/dev" type="str" value="/dev/input/js1" />

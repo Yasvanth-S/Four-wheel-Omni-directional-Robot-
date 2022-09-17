@@ -18,7 +18,7 @@
       <param name="initial_pose_yy"            value="$(arg initial_pose_yy)"/>
       <param name="initial_pose_aa"            value="$(arg initial_pose_aa)"/>
       <param name="odom_model_type" value="omni-corrected"/>
-      <param name="gui_publish_rate" value="50.0"/>
+      <param name="gui_publish_rate" value="10.0"/>
       <param name="use_map_topic" value="true"/>
       <param name="save_pose_rate" value="10.0"/>
       <param name="laser_min_range" value="0.15"/>
@@ -34,10 +34,10 @@
       <param name="odom_alpha3" value="0.01"/>
       <param name="odom_alpha4" value="0.01"/>
       <param name="odom_alpha5" value="0.02"/>
-      <param name="laser_z_hit" value="1.0"/>
+      <param name="laser_z_hit" value="0.7"/>
       <param name="laser_z_short" value="0.1"/>
       <param name="laser_z_max" value="0.1"/>
-      <param name="laser_z_rand" value="1.0"/>
+      <param name="laser_z_rand" value="0.7"/>
       <param name="laser_sigma_hit" value="0.1"/>
       <!--<param name="laser_lambda_short" value="0.1"/> -->
       <param name="laser_model_type" value="likelihood_field"/> 
@@ -47,7 +47,7 @@
       <param name="global_frame_id" value="map"/>
       <param name="tf_broadcast" value="true"/>
       <param name="resample_interval" value="1"/>
-      <param name="transform_tolerance" value="5.0"/>
+      <param name="transform_tolerance" value="0.5"/>
       <param name="recovery_alpha_slow" value="0.001"/>
       <param name="recovery_alpha_fast" value="0.1"/>
     </node>

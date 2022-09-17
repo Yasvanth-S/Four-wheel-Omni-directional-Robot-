@@ -9,8 +9,7 @@
     <rosparam file="$(find quicksilver_description)/params/global_costmap_params.yaml" command="load"/>
     <rosparam file="$(find quicksilver_description)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find quicksilver_description)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <param name="controller_frequency" value="10.0" />
     <rosparam file="$(find quicksilver_description)/params/base_local_planner_params.yaml" command="load" />
-    <!-- <rosparam file="$(find quicksilver_description)/params/move_base_params.yaml" command="load" /> -->
+    <rosparam file="$(find quicksilver_description)/params/move_base_params.yaml" command="load" />
   </node>
 </launch>

@@ -1,26 +1,24 @@
 local_costmap:
-  #We'll publish the voxel grid used by this costmap
-  #publish_voxel_map: true
   robot_radius: 0.36
-  footprint_padding: 0.02
-  transform_tolerance: 5.0
+  footprint_padding: 0.0
+  transform_tolerance: 1.0
   #Set the global and robot frames for the costmap
   global_frame: odom
   robot_base_frame: base_footprint
 
   #Set the update and publish frequency of the costmap
-  update_frequency: 7.5
-  publish_frequency: 2.0
+  update_frequency: 10.0
+  publish_frequency: 10.0
 
   #We'll configure this costmap to be a rolling window... meaning it is always
   #centered at the robot
   static_map: false
   rolling_window: true
-  width: 1
-  height: 1
-  resolution: 0.015
-  # origin_x: 10.0
-  # origin_y: 1.0
+  width: 7.0
+  height: 7.0
+  #resolution: 0.01
+  footprint: [[-0.36, -0.36], [-0.36, 0.36], [0.36, 0.36], [0.36, 0.36], [0.36, -0.36]]
+  footprint_padding: 0.0
   plugins:
     - {name: static_map,           type: "costmap_2d::StaticLayer"}            
     - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
@@ -36,5 +34,5 @@ local_costmap:
         
 
   inflation:
-    inflation_radius: 0.4
-    cost_scaling_factor: 4 # larger number = lower cost elevation
+    inflation_radius: 0.36
+    cost_scaling_factor: 3.0 # larger number = lower cost elevation

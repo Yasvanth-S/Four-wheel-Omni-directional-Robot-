@@ -40,4 +40,10 @@
                         |  4   | 0004 | 0004 | quicksilver wheel 4 |
 
 ## **Gmapping Image**
-![alt text](https://github.com/Yasvanth-S/quicksilver/blob/master/assets/Gmapping.png?raw=true)
+![Gmapping](https://github.com/Yasvanth-S/quicksilver/blob/master/assets/Gmapping.png?raw=true)
+
+##**Navigation Stack Simulation**
+![Navigation](https://github.com/Yasvanth-S/quicksilver/blob/master/assets/navigation.gif?raw=true)
+
+##**Navigation Stack Obstacle Avoidance Simulation**
+![Obstacle Avoidance](https://github.com/Yasvanth-S/quicksilver/blob/master/assets/obstacle_avoidance.gif?raw=true)
